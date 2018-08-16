@@ -1,0 +1,63 @@
+package com.Excel_Test;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.lift.find.InputFinder;
+
+public class Write_Operation_into_Excel {
+
+	public static void main(String[] args) throws IOException 
+	
+	{
+// write operation on Excel
+	
+// Identify file on your Selenium code
+		FileInputStream File = new FileInputStream("C:\\Users\\Srinivasa\\Desktop\\SeleniumProject\\MyFirstJavaProject\\src\\ApplicationTestDataFiles\\Demo_Links_InputFile.xlsx");
+
+// Identify Workbook
+		XSSFWorkbook Workbook = new XSSFWorkbook(File);
+
+// Identify Sheet withn Workbook
+		XSSFSheet Sheet = Workbook.getSheet("Sheet1");
+		
+// Identify where you want to write 
+// Which row and which Cell on that particular row
+// Example - 0th row of 5th cell(1st row of 6th cell)
+		
+		Row r = Sheet.createRow(4);
+	
+// Identify cell in the above 4th Row
+		Cell c = r.createCell(5);
+		
+// so far we have identified Excel File, Workbook, sheet1, row and cell,
+// Now write the word or message in the workbook
+		
+// for this selenium got a claas called, setCellValue
+		
+		c.setCellValue("Abhay Reddy");
+		
+		FileOutputStream File1 = new FileOutputStream("C:\\Users\\Srinivasa\\Desktop\\SeleniumProject\\MyFirstJavaProject\\src\\com\\FindListOfLinksInHomePageOfDemoApp\\Demo_Links_OutPut_File.xlsx");
+		
+		Workbook.write(File1);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

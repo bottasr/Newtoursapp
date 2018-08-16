@@ -1,0 +1,62 @@
+package com.NewToursApplication;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class DemotoursLoginTest {
+
+	FirefoxDriver driver;
+
+// Copy and paste the test result of Newtours_Login.java class (under the package - com.StepDefinition) result.
+// create new package and class (com.NewToursApplication, followed by class name: DemotoursLoginTest)
+// and paste test result and remove throws declaration 
+//You can implement missing steps with the snippets below:
+
+@Given("^Open Firefox Browser and Navigate To Newtours Application$")
+public void Open_Firefox_Browser_and_Navigate_To_Newtours_Application() throws Throwable
+{
+
+	driver = new FirefoxDriver();
+	driver.get("http://newtours.demoaut.com");
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+}
+
+@When("^User Enters Username and Password and Click on Signin button$")
+public void User_Enters_Username_and_Password_and_Click_on_Signin_button() throws Throwable
+{
+
+//<input type="text" size="10" name="userName">
+	driver.findElement(By.name("userName")).sendKeys("tutorial");
+
+
+//	<input type="password" size="10" name="password">
+driver.findElement(By.name("password")).sendKeys("tutorial");
+
+//<input width="58" type="image" border="0" height="17" alt="Sign-In" src="/images/btn_signin.gif?osCsid=56da038c34349b0c2957bcfae999dcfa" value="Login" name="login">
+driver.findElement(By.name("login")).click();
+
+}
+
+@Then("^User Should be able to Successfully to Application and Close the Browser$")
+public void User_Should_be_able_to_Successfully_to_Application_and_Close_the_Browser() throws Throwable
+{
+
+	System.out.println(driver.getTitle());
+	System.out.println(driver.getCurrentUrl());
+	System.out.println();
+	driver.close();
+}
+
+
+
+
+}
+

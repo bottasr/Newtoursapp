@@ -1,0 +1,39 @@
+package com.Newtours_Login_Multitestdata;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+// after execution of java class specified under Newtours_Login_Multitestdata 
+//package name (com.StepDefinition)
+//copy the result in another java class(In this situation, i am using new package and new java class
+// paste it here. delete garbage and import all annotations
+public class Newtours_Login_Multitest 
+{
+
+
+
+
+@Given("^Open Firefox Browser and Navigate To Newtours Application$")
+public void Open_Firefox_Browser_and_Navigate_To_Newtours_Application() 
+{
+	
+}
+
+@When("^User Enters Username and Password and Click on Signin button$")
+public void User_Enters_Username_and_Password_and_Click_on_Signin_button()
+{
+}
+
+@Then("^User Should be able to Successfully to Application and Close the Browser$")
+public void User_Should_be_able_to_Successfully_to_Application_and_Close_the_Browser() 
+
+{
+	
+}
+
+
+	
+	
+	
+}

@@ -1,0 +1,19 @@
+#Creating Feature file
+#Feature: Newtours Application Login Functionality Testing
+#Scenario: Validating Login Functionality of Newtours Application
+#Given Open Firefox Browser and Navigate To Newtours Application
+#When User Enters Username and Password and Click on Signin button
+#Then User Should be able to Successfully to Application and Close the Browser
+
+
+Feature: Newtous Application login functionality testing with multi test data
+Scenario Outline: Validating login functionality with multi test data
+Given Open firefox browser and navidate to application
+When user enters valid "<userName>" and "<password>" and then click on signin button
+Then user successflly logon to newtours application and close the browser
+
+|userName     |  |password    |
+|tutorial     |  |tutorial    |
+|ram          |  |ram         |
+|mercury      |  |mercury     |
+|hello        |  |hello       |

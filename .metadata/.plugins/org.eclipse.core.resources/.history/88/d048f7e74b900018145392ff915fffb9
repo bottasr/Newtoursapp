@@ -1,0 +1,158 @@
+package com.DemoTous_ScreenShots_Dynamic;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.rules.Timeout;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.server.handler.GetScreenOrientation;
+import org.openqa.selenium.server.browserlaunchers.Sleeper;
+
+public class Capture_ScreenShots_Dynamically {
+
+	public static void main(String[] args) throws IOException 
+	{
+//Req:  Goto http://newtours.demoaut.com home page, 
+// find out all links, 
+// Click on all links and print the result page URL
+// Take a ScreeShot of all above Result pages and save them
+
+	FirefoxDriver driver = new FirefoxDriver();
+	driver.get("http://newtours.demoaut.com");
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	//This is Implicit Wait Time method in selenium, and its a global wait time, 
+	// once you declare in class, it will be applicable for all statements / entire program
+	// If the web page is loaded in 2 sec, selenium script will execute next steop in the program 
+	// instead of waiting for 10 sec, whcih we specified
+	
+	//System.out.println(driver.getCurrentUrl());
+	
+// find all the links in home page.  usually we identify links based on the ancor tag 
+// starts with <a href>, for sign-in link, i found below info usig firebug.
+//<a href="mercurysignon.php?osCsid=29ec28e5182f65a813b5315139f0c78e">SIGN-ON</a>
+// we can find all links by using tagname 
+	
+	List<WebElement>AllLinks=driver.findElements(By.tagName("a"));
+	
+	// I created Array and named as - AllLinks,
+	// I am using tagName to identify all links (multiple number of elements) from the 
+	// object (In Selenium, entire web page is an object and all other fields are Elements)
+	// Storing all links in Araay (morethan one and dont know the exact number)
+	// now all links are stored in array - AllLinks
+// pull the link count from array
+// Count is a integer and declaring variable as int LinkCount
+	int LinkCount = AllLinks.size();
+//	printing LinkCount
+		System.out.println("Total Links Found in Web Page:  " + LinkCount);
+		
+
+// Retrieve total number of links
+// we are using for loop
+		
+		for (int i = 0; i < AllLinks.size(); i++) 
+		
+		{
+	// Getting Text of all link names
+	// Printing all link urls
+	// i is an index, start with 0 and until end of linkcount
+			 String LinkName=AllLinks.get(i).getText();
+			 System.out.println(i + ". " + LinkName);
+			 System.out.println(LinkName);
+			
+// Click on each link
+			 
+			 AllLinks.get(i).click();
+			 System.out.println(driver.getTitle());
+			 System.out.println(driver.getCurrentUrl());
+			 System.out.println();
+			 
+			 
+// Here Array value becomes zero, so initialize array again
+			 
+//		 AllLinks=driver.findElements(By.tagName("a"));
+			 
+	
+			 
+//		/*	 
+			 
+// Write a program to capture screenshots of all result pages from the above URLs
+			 
+				// File is type of variable, thats the we r storing in File Type
+				//File SrcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	
+	
+	File SrcFile	= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+			
+	//FileUtils.copyFile(SrcFile, new File ("C:\\Users\\Srinivasa\\Desktop\\SeleniumProject\\MyFirstJavaProject\\ScreenShot\\reddy.png"));
+	
+	//FileUtils.copyFile(SrcFile, new File("C:\\Users\\Srinivasa\\Desktop\\SeleniumProject\\MyFirstJavaProject\\ScreenShot\\"+AllLinks+"reddy.png"));
+	
+FileUtils.copyFile(SrcFile, new File("C:\\Users\\Srinivasa\\Desktop\\SeleniumProject\\MyFirstJavaProject\\ScreenShot\\"+AllLinks+"reddy.png"));
+		
+	
+//driver.navigate().back();
+	
+	// Here Array value becomes zero, so initialize array again
+	 
+ AllLinks=driver.findElements(By.tagName("a"));
+	 
+
+		
+// */			
+	
+		 
+		 
+		}
+
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		driver.close();
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+		
+		
+	}
+
+}

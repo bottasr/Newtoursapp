@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/MyFirstJavaProject/src/com/Capture_One_Row_Data_from_Dateandtime_App/Featching_Entire_Table_Data_Dynamically.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.Capture_One_Row_Data_from_Dateandtime_App.Featching_Entire_Table_Data_Dynamically"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="MyFirstJavaProject"/>
+</launchConfiguration>

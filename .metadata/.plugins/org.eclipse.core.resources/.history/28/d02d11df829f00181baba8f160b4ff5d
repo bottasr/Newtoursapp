@@ -1,0 +1,103 @@
+package com.FindListOfLinksInHomePageOfDemoApp;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class NewTours_HomePage_LinksTesting 
+{
+	public static void main(String[] args) throws IOException 
+	{
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.get("http://newtours.demoaut.com");
+	
+		List<WebElement>links=driver.findElements(By.tagName("a"));
+		int linksCount=links.size();
+System.out.println("Total number of links on NewTours HomePage is:"
+		              +linksCount);
+	
+	for(int k=1;k<links.size();k++)
+	{
+		String linkName=links.get(k).getText();
+		System.out.println(k+" "+linkName);
+		
+		links.get(k).click();
+		
+		System.out.println(driver.getTitle());
+		System.out.println(driver.getCurrentUrl());
+		System.out.println();
+		
+		String Currurl=driver.getCurrentUrl();
+		
+		// write operation on Excel
+		
+		// Identify file on your Selenium code
+				FileInputStream File = new FileInputStream("C:\\Users\\Srinivasa\\Desktop\\SeleniumProject\\MyFirstJavaProject\\src\\ApplicationTestDataFiles\\Demo_Links_InputFile.xlsx");
+
+		// Identify Workbook
+				XSSFWorkbook Workbook = new XSSFWorkbook(File);
+
+		// Identify Sheet withn Workbook
+				XSSFSheet Sheet = Workbook.getSheet("Sheet1");
+				
+		// Identify where you want to write 
+		// Which row and which Cell on that particular row
+		// Example - 0th row of 5th cell(1st row of 6th cell)
+				
+		//		Row r = Sheet.createRow(1);
+				Row r = Sheet.createRow(k);
+				
+		// Identify cell in the above 4th Row
+				Cell c = r.createCell(0);
+				
+		// so far we have identified Excel File, Workbook, sheet1, row and cell,
+		// Now write the word or message in the workbook
+				
+		// for this selenium got a claas called, setCellValue
+				
+	//			c.setCellValue("test");  Hard coded
+				// c.setCellValue(Currurl);
+				
+				for (int i = 1; i <= Currurl.length(); i++) {
+					
+					c.setCellValue(Currurl);
+				}
+				
+				FileOutputStream File1 = new FileOutputStream("C:\\Users\\Srinivasa\\Desktop\\SeleniumProject\\MyFirstJavaProject\\src\\com\\FindListOfLinksInHomePageOfDemoApp\\Demo_Links_OutPut_File.xlsx");
+				
+				Workbook.write(File1);
+		
+		
+		
+		
+		// Navigating back to the Home page
+		driver.navigate().back();
+		
+		// when performed click Operation on an index of an Array
+		// the page gets refreshed and the information stored in the 
+		// Array is going to be lost or cleared off 
+		// and so is the reason we need to recreated the Array again
+		// to store back all the elements
+		links=driver.findElements(By.tagName("a"));
+				
+		
+		
+		
+		
+		
+	}
+	driver.close();
+
+	}
+
+}
